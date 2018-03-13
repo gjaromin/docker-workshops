@@ -1,0 +1,30 @@
+# to run docker-compose -f this-file.name build
+version: '3.1' # version of docker compose
+
+services:
+  wordpress:
+    image: wordpress:latest
+    restart: always
+    ports:
+      - 8080:80 #map wp container port (80) to localhost at (8080)
+      - 22:22
+    environment:
+      WORDPRESS_DB_PASSWORD: password
+    volumes:
+      - "./data:/var/www/html/"
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - "data:/var/lib/mysql"
+
+  adminer: #a little better phpAdminPanel
+    image: adminer
+    ports:
+      - 8001:8080
+
+volumes:
+  data:

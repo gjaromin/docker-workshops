@@ -1,0 +1,16 @@
+#Fargate
+#cli access
+#cloud formation
+#CI
+#Kubernetes/Openshift
+
+Add description to scripts
+
+Docker vs Windows
+
+#Install docker-compose on EC2
+https://docs.docker.com/compose/install/#master-builds
+
+Linux vs Docker containers
+Windows containers
+-itd 

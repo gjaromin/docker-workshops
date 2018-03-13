@@ -1,0 +1,45 @@
+
+#Container Management
+
+docker run -d httpd
+
+docker ps
+
+docker exec -it c-id /bash/bin
+
+#write some data and stop
+
+docker stop c-id
+#After stop still can be started
+docker start c-id
+
+#Permanently remove data
+docker rm c-id
+
+docker run -itd httpd /bin/bash
+docker attach c-id
+
+#Port exposing - !be sure that ports open
+docker run -itd -p 8080:80 httpd
+docker ps # to see that the port is exposed
+
+#Shared volumes
+docker run -itd -p 8081:80 -v "$PWD/data":/usr/local/apache2/htdocs/ httpd 
+docker inspect c-id
+#+NFS
+
+#Node js
+docker run -it -d --name node-js-app --rm -p 3000:3000 -v "$PWD":/src -w /src node:latest node app.js
+
+#Logs
+docker logs -f c-id
+
+#Dockerfile + Node js
+
+#Docker compose
+docker-compose -f wordpress-stack.yml up 
+docker-compose -f wordpress-stack.yml logs
+
+ctrl+q+p
+
+sudo docker run -i -t -e FOO=foo -e BAR=bar <image_name> /bin/bash

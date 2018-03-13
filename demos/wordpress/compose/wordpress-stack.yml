@@ -1,0 +1,21 @@
+# To run execute: docker-compose -f this-file.name up
+version: '3.1' # version of docker compose
+
+services:
+  wordpress:
+    image: wordpress #fetched latest image from docker hub if not available locally
+    restart: always
+    ports:
+      - 8080:80 #map wp container port (80) to localhost at (8080)
+      - 22:22
+    environment:
+      WORDPRESS_DB_PASSWORD: password
+    links:
+      - db:mysql
+    depends_on:
+       - db
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password

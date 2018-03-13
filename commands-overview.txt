@@ -1,0 +1,16 @@
+
+#Container Management
+
+
+#Debug/Stats
+docker stats con-id
+docker logs -f con-id
+docker inspect con-id
+docker ps -s # disk usage (not included all data e.g mount volumes, virtual means shared between multiple containers(ready only), )
+
+
+#Images
+docker images 
+docker images history
+docker history openjdk
+docker rmi img-name
